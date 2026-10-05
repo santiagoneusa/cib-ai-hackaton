@@ -104,18 +104,3 @@ Claude: [Reviews methodology] → [Checks for survivorship bias in churn analysi
           which could overstate conversion rate by ~5pp"]
        → [Confidence: "Ready to share with noted caveat"]
 ```
-
-## Connecting Your Data Stack
-
-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).
-
-This plugin works best when connected to your data infrastructure. Add MCP servers for:
-
-- **Data Warehouse**: Snowflake, Databricks, BigQuery, Definite, or any SQL-compatible database
-- **Analytics/BI**: Amplitude, Looker, Tableau, or similar
-- **Notebooks**: Jupyter, Hex, or similar
-- **Spreadsheets**: Google Sheets, Excel
-- **Data Orchestration**: Airflow, dbt, Dagster, Prefect
-- **Data Ingestion**: Fivetran, Airbyte, Stitch
-
-Configure MCP servers in your `.mcp.json` or Claude Code settings to enable direct data access.
