@@ -1,17 +1,19 @@
 ---
-name: create-viz
-description: Create publication-quality visualizations with Python. Use when turning query results or a DataFrame into a chart, selecting the right chart type for a trend or comparison, generating a plot for a report or presentation, or needing an interactive chart with hover and zoom.
+name: org-visualization
+description: Create charts that follow the bank's visual standards (palette, typography, layout) using the org_style module. Use when turning a DataFrame into a chart, choosing a chart type, or producing figures for notebooks, reports or presentations.
 argument-hint: "<data source> [chart type]"
 ---
 
-# /create-viz - Create Visualizations
+# /org-visualization - Charts with Organizational Standards
 
-Create publication-quality data visualizations using Python. Generates charts from data with best practices for clarity, accuracy, and design.
+Create charts with matplotlib/seaborn/plotly that always use the organization's style. Colors and fonts come from `org_style.py`, never from hardcoded values.
+
+Chart-selection theory and accessibility details live in `references/chart-design.md`. Open it only when the chart type is not obvious.
 
 ## Usage
 
 ```
-/create-viz <data source> [chart type] [additional instructions]
+/org-visualization <data source> [chart type] [additional instructions]
 ```
 
 ## Workflow
@@ -133,15 +135,15 @@ plt.show()
 ## Examples
 
 ```
-/create-viz Show monthly revenue for the last 12 months as a line chart with the trend highlighted
+/org-visualization Show monthly revenue for the last 12 months as a line chart with the trend highlighted
 ```
 
 ```
-/create-viz Here's our NPS data by product: [pastes data]. Create a horizontal bar chart ranking products by score.
+/org-visualization Here's our NPS data by product: [pastes data]. Create a horizontal bar chart ranking products by score.
 ```
 
 ```
-/create-viz Query the orders table and create a heatmap of order volume by day-of-week and hour
+/org-visualization Query the orders table and create a heatmap of order volume by day-of-week and hour
 ```
 
 ## Tips

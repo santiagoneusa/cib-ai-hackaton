@@ -1,17 +1,19 @@
 ---
-name: write-query
-description: Write optimized SQL for your dialect with best practices. Use when translating a natural-language data need into SQL, building a multi-CTE query with joins and aggregations, optimizing a query against a large partitioned table, or getting dialect-specific syntax for Snowflake, BigQuery, Postgres, etc.
+name: impala-query
+description: Write, optimize and wire Impala SQL that runs through the internal impala-helper library from Python. Use when translating a data need into an Impala query, optimizing a query on a large partitioned table, storing a query as a .sql file, or calling it from a script or notebook.
 argument-hint: "<description of what data you need>"
 ---
 
-# /write-query - Write Optimized SQL
+# /impala-query - Write Impala SQL for impala-helper
 
-Write a SQL query from a natural language description, optimized for your specific SQL dialect and following best practices.
+Write an Impala query from a natural language description, following the team's query standards, and wire it into Python through `impala-helper`.
+
+Detailed SQL patterns and anti-patterns live in `references/sql-best-practices.md`. Open it only when the query needs window functions, complex joins or performance tuning.
 
 ## Usage
 
 ```
-/write-query <description of what data you need>
+/impala-query <description of what data you need>
 ```
 
 ## Workflow
@@ -78,7 +80,7 @@ Follow these best practices:
 - Put each major clause on its own line
 
 **Dialect-specific optimizations:**
-- Apply dialect-specific syntax and functions (see `sql-queries` skill for details)
+- Apply dialect-specific syntax and functions (see `references/sql-best-practices.md`)
 - Use dialect-appropriate date functions, string functions, and window syntax
 - Note any dialect-specific performance features (e.g., Snowflake clustering, BigQuery partitioning)
 
@@ -99,17 +101,17 @@ If a data warehouse is connected, offer to run the query and analyze the results
 
 **Simple aggregation:**
 ```
-/write-query Count of orders by status for the last 30 days
+/impala-query Count of orders by status for the last 30 days
 ```
 
 **Complex analysis:**
 ```
-/write-query Cohort retention analysis -- group users by their signup month, then show what percentage are still active (had at least one event) at 1, 3, 6, and 12 months after signup
+/impala-query Cohort retention analysis -- group users by their signup month, then show what percentage are still active (had at least one event) at 1, 3, 6, and 12 months after signup
 ```
 
 **Performance-critical:**
 ```
-/write-query We have a 500M row events table partitioned by date. Find the top 100 users by event count in the last 7 days with their most recent event type.
+/impala-query We have a 500M row events table partitioned by date. Find the top 100 users by event count in the last 7 days with their most recent event type.
 ```
 
 ## Tips

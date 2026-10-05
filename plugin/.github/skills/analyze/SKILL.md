@@ -43,7 +43,7 @@ Parse the user's question and determine:
    - Paste query results directly
    - Upload a CSV or Excel file
    - Describe the schema so you can write queries for them to run
-2. If writing queries for manual execution, use the `sql-queries` skill for dialect-specific best practices
+2. If writing queries for manual execution, use the `impala-query` skill
 3. Once data is provided, proceed with analysis
 
 ### 3. Analyze
@@ -88,7 +88,7 @@ If any check raises concerns, investigate and note caveats.
 
 When a chart would communicate results more effectively than a table:
 
-- Use the `data-visualization` skill to select the right chart type
+- Use the `org-visualization` skill to select the right chart type
 - Generate a Python visualization or build it into an HTML dashboard
 - Follow visualization best practices for clarity and accuracy
 
