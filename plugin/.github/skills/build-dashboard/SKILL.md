@@ -28,8 +28,8 @@ Determine:
 
 ### 2. Gather the Data
 
-**If data warehouse is connected:**
-1. Query the necessary data
+**If the data lives in Impala:**
+1. Query it via `impala-helper` (API in the `impala-query` skill, `references/impala-helper-api.md`)
 2. Embed the results as JSON within the HTML file
 
 **If data is pasted or uploaded:**

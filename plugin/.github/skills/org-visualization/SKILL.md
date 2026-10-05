@@ -29,8 +29,8 @@ Determine:
 
 ### 2. Get the Data
 
-**If data warehouse is connected and data needs querying:**
-1. Write and execute the query
+**If the data must be queried from Impala:**
+1. Write the query with the `impala-query` skill and execute it via `impala-helper` (API in the `impala-query` skill, `references/impala-helper-api.md`)
 2. Load results into a pandas DataFrame
 
 **If data is pasted or uploaded:**

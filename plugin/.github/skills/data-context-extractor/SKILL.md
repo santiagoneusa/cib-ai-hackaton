@@ -24,23 +24,16 @@ Use when: User wants to create a new data context skill for their warehouse.
 
 **Step 1: Identify the database type**
 
-Ask: "What data warehouse are you using?"
-
-Common options:
-- **BigQuery**
-- **Snowflake**
-- **PostgreSQL/Redshift**
-- **Databricks**
-
-Use `~~data warehouse` tools (query and schema) to connect. If unclear, check available MCP tools in the current session.
+The warehouse is always Impala, accessed through `impala-helper` (see the `impala-query` skill). Do not ask.
 
 **Step 2: Explore the schema**
 
-Use `~~data warehouse` schema tools to:
+Use Impala metadata statements (`SHOW DATABASES`, `SHOW TABLES IN <db>`, `DESCRIBE <db>.<table>`, `SHOW PARTITIONS`) through `impala-helper` to:
 1. List available datasets/schemas
 2. Identify the most important tables (ask user: "Which 3-5 tables do analysts query most often?")
 3. Pull schema details for those key tables
 
+<!-- TODO(content): replace the multi-dialect samples below with Impala-only examples; generated references should land in the impala-query skill or a data-context skill under .github/skills. -->
 Sample exploration queries by dialect:
 ```sql
 -- BigQuery: List datasets
@@ -155,7 +148,7 @@ Common gaps:
 
 For the identified domain:
 
-1. **Explore relevant tables**: Use `~~data warehouse` schema tools to find tables in that domain
+1. **Explore relevant tables**: Use `SHOW TABLES` / `DESCRIBE` through `impala-helper` to find tables in that domain
 2. **Ask domain-specific questions**:
    - "What tables are used for [domain] analysis?"
    - "What are the key metrics for [domain]?"

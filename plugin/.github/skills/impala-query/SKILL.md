@@ -29,31 +29,19 @@ Parse the user's description to identify:
 - **Ordering**: How should results be sorted?
 - **Limits**: Is there a top-N or sample requirement?
 
-### 2. Determine SQL Dialect
+### 2. Dialect
 
-If the user's SQL dialect is not already known, ask which they use:
+Always Impala. Do not ask for the dialect.
 
-- **PostgreSQL** (including Aurora, RDS, Supabase, Neon)
-- **Snowflake**
-- **BigQuery** (Google Cloud)
-- **Redshift** (Amazon)
-- **Databricks SQL**
-- **MySQL** (including Aurora MySQL, PlanetScale)
-- **SQL Server** (Microsoft)
-- **DuckDB**
-- **SQLite**
-- **Other** (ask for specifics)
+### 3. Discover Schema
 
-Remember the dialect for future queries in the same session.
+Run metadata statements through `impala-helper` (see `references/impala-helper-api.md`):
 
-### 3. Discover Schema (If Warehouse Connected)
+- `SHOW TABLES IN <db>` to find candidate tables
+- `DESCRIBE <db>.<table>` for columns and types
+- `SHOW PARTITIONS <db>.<table>` to find the partition columns that every query must filter on
 
-If a data warehouse MCP server is connected:
-
-1. Search for relevant tables based on the user's description
-2. Inspect column names, types, and relationships
-3. Check for partitioning or clustering keys that affect performance
-4. Look for pre-built views or materialized views that might simplify the query
+<!-- TODO(content): list the most-used databases/tables or point to the data-context reference. -->
 
 ### 4. Write the Query
 
@@ -93,9 +81,12 @@ Provide:
 3. **Performance notes** if relevant (expected cost, partition usage, potential bottlenecks)
 4. **Modification suggestions** -- how to adjust for common variations (different time range, different granularity, additional filters)
 
-### 6. Offer to Execute
+### 6. Save and Wire into Python
 
-If a data warehouse is connected, offer to run the query and analyze the results. If the user wants to run it themselves, the query is ready to copy-paste.
+1. Save the query as a `.sql` file in the project's queries folder. Never inline SQL in Python strings.
+2. Execute it from Python through `impala-helper`, passing parameters (dates, segments) instead of formatting strings.
+
+<!-- TODO(content): add the canonical impala-helper call snippet and the queries folder path from the project structure. -->
 
 ## Examples
 

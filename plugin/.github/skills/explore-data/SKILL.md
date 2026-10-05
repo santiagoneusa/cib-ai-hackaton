@@ -18,7 +18,7 @@ Generate a comprehensive data profile for a table or uploaded file. Understand i
 
 ### 1. Access the Data
 
-**If a data warehouse MCP server is connected:**
+**If it is an Impala table, query it via `impala-helper` (API in the `impala-query` skill, `references/impala-helper-api.md`):**
 
 1. Resolve the table name (handle schema prefixes, suggest matches if ambiguous)
 2. Query table metadata: column names, types, descriptions if available
@@ -31,7 +31,7 @@ Generate a comprehensive data profile for a table or uploaded file. Understand i
 
 **If neither:**
 
-1. Ask the user to provide a table name (with their warehouse connected) or upload a file
+1. Ask the user to provide a table name (Impala `db.table`) or upload a file
 2. If they describe a table schema, provide guidance on what profiling queries to run
 
 ### 2. Understand Structure
@@ -282,7 +282,8 @@ When documenting a dataset for team use:
 
 ### Schema Exploration Queries
 
-When connected to a data warehouse, use these patterns to discover schema:
+Prefer the Impala metadata statements in the `impala-query` skill (`SHOW TABLES`, `DESCRIBE`, `SHOW PARTITIONS`, `SHOW TABLE STATS`). Generic patterns for reference:
+<!-- TODO(content): replace the non-Impala examples below with Impala equivalents and drop the rest. -->
 
 ```sql
 -- List all tables in a schema (PostgreSQL)

@@ -29,7 +29,7 @@ Parse the user's question and determine:
 
 ### 2. Gather Data
 
-**If a data warehouse MCP server is connected:**
+**Query Impala via `impala-helper` (API in the `impala-query` skill, `references/impala-helper-api.md`):**
 
 1. Explore the schema to find relevant tables and columns
 2. Write SQL query(ies) to extract the needed data
@@ -37,7 +37,7 @@ Parse the user's question and determine:
 4. If the query fails, debug and retry (check column names, table references, syntax for the specific dialect)
 5. If results look unexpected, run sanity checks before proceeding
 
-**If no data warehouse is connected:**
+**If the user provides the data directly:**
 
 1. Ask the user to provide data in one of these ways:
    - Paste query results directly
