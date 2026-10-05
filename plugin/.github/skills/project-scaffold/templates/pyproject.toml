@@ -1,0 +1,24 @@
+[project]
+name = "project_name"
+version = "0.1.0"
+requires-python = ">=3.9"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+# E/W/F: errors, I: import order, N: naming, D: docstrings, ANN: type hints,
+# B: bugbear, UP: modern syntax, C90: complexity, T20: no print, PL: pylint.
+select = ["E", "W", "F", "I", "N", "D", "ANN", "B", "UP", "C90", "T20", "PL"]
+ignore = ["D100", "D104"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.ruff.lint.per-file-ignores]
+"notebooks/*.ipynb" = ["D", "ANN", "T20"]
+"tests/*" = ["D", "ANN", "PLR2004"]
