@@ -68,46 +68,32 @@ Write Python code using one of these libraries based on the need:
 
 **Code requirements:**
 
+`org_style` lives in the project package (copied by `project-scaffold` from `assets/org_style.py`). If it is missing, copy it there; never recreate the palette by hand.
+
 ```python
 import matplotlib.pyplot as plt
-import seaborn as sns
-import pandas as pd
 
-# Set professional style
-plt.style.use('seaborn-v0_8-whitegrid')
-sns.set_palette("husl")
+from project_name import org_style
 
-# Create figure with appropriate size
-fig, ax = plt.subplots(figsize=(10, 6))
+org_style.apply()  # palette, fonts, spines, plotly template
 
-# [chart-specific code]
+fig, ax = plt.subplots()
 
-# Always include:
-ax.set_title('Clear, Descriptive Title', fontsize=14, fontweight='bold')
-ax.set_xlabel('X-Axis Label', fontsize=11)
-ax.set_ylabel('Y-Axis Label', fontsize=11)
+# [chart-specific code] - colors only from org_style: PRIMARY, NEUTRAL, PALETTE...
 
-# Format numbers appropriately
-# - Percentages: '45.2%' not '0.452'
-# - Currency: '$1.2M' not '1200000'
-# - Large numbers: '2.3K' or '1.5M' not '2300' or '1500000'
+ax.set_title("Insight as a title, e.g. Deposits grew 12% YoY")
+ax.set_xlabel("X-Axis Label")
+ax.set_ylabel("Y-Axis Label")
 
-# Remove chart junk
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
+# Format numbers: '45.2%' not '0.452', '$1.2M' not '1200000'
 
-plt.tight_layout()
-plt.savefig('chart_name.png', dpi=150, bbox_inches='tight')
+org_style.save(fig, "deposits_by_segment")  # outputs/figures/, standard DPI
 plt.show()
 ```
 
 ### 5. Apply Design Best Practices
 
-**Color:**
-- Use a consistent, colorblind-friendly palette
-- Use color meaningfully (not decoratively)
-- Highlight the key data point or trend with a contrasting color
-- Grey out less important reference data
+**Color:** follow `references/palette.md`. Highlight one thing with `PRIMARY` or `ACCENT`, the rest in `NEUTRAL`.
 
 **Typography:**
 - Descriptive title that states the insight, not just the metric (e.g., "Revenue grew 23% YoY" not "Revenue by Month")

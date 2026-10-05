@@ -15,7 +15,7 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-TEMPLATES_DIR = Path(__file__).resolve().parent.parent / "templates"
+SKILLS_DIR = Path(__file__).resolve().parents[2]
 PACKAGE_PLACEHOLDER = "{package}"
 PROJECT_NAME_PATTERN = re.compile(r"^[a-z][a-z0-9_]*$")
 
@@ -29,11 +29,12 @@ PROJECT_TREE = (
     "tests",
 )
 
-# (template file, destination relative to the project root)
+# (source relative to .github/skills, destination relative to the project root)
 TEMPLATE_FILES = (
-    ("pyproject.toml", "pyproject.toml"),
-    ("constants.py", f"src/{PACKAGE_PLACEHOLDER}/constants.py"),
-    ("notebook_template.ipynb", "notebooks/01_extraction.ipynb"),
+    ("project-scaffold/templates/pyproject.toml", "pyproject.toml"),
+    ("project-scaffold/templates/constants.py", f"src/{PACKAGE_PLACEHOLDER}/constants.py"),
+    ("project-scaffold/templates/notebook_template.ipynb", "notebooks/01_extraction.ipynb"),
+    ("org-visualization/assets/org_style.py", f"src/{PACKAGE_PLACEHOLDER}/org_style.py"),
 )
 
 README_TEMPLATE = "# {name}\n\n**Objective:**\n\n**Owner:**\n\n## How to run\n"
@@ -74,7 +75,7 @@ class ProjectScaffolder:
     def _copy_templates(self) -> None:
         for template, destination in TEMPLATE_FILES:
             target = self._resolve(destination)
-            shutil.copyfile(TEMPLATES_DIR / template, target)
+            shutil.copyfile(SKILLS_DIR / template, target)
             text = target.read_text(encoding="utf-8").replace("project_name", self._name)
             target.write_text(text, encoding="utf-8")
 
