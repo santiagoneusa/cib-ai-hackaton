@@ -2,7 +2,14 @@
 
 Skills, instructions and prompts that make GitHub Copilot (VS Code) produce analytics work that follows the team standards: project structure, Python and notebook conventions, Impala queries through `impala-helper`, data transfers through `harbor`, and the organizational chart style.
 
-Based on Anthropic's open-source data plugin, adapted for Copilot and for the team's stack.
+## Origin
+
+This project is a fork of Anthropic's [data plugin](https://github.com/anthropics/knowledge-work-plugins/tree/main/data) from `knowledge-work-plugins`. We kept its analysis workflows as a starting point but redesigned it for our needs:
+
+- **Runtime**: GitHub Copilot in VS Code instead of Claude Cowork / Claude Code (`.github/` skills, instructions and prompts instead of a Claude plugin manifest).
+- **Data access**: the internal `impala-helper` and `harbor` libraries instead of MCP warehouse connectors.
+- **Team standards**: new skills, scoped instructions and scripts for project structure, Python and notebook conventions, Impala SQL rules and the organizational chart style.
+- **Token efficiency**: always-on, path-scoped and on-demand layers, merged skills and progressive disclosure through `references/`.
 
 ## The problem
 
