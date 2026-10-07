@@ -14,8 +14,8 @@ How we prove the value of the bundle: the same tasks, the same model, with and w
 
 ## Protocol
 
-1. Pick 8-10 representative tasks (below). Same wording for both runs.
-2. **Baseline**: a clean project without the bundle. Run each task in Copilot agent mode. Repeat 2-3 times.
+1. Use the benchmark tests (below). Same prompt wording for both arms.
+2. **Baseline**: a clean project without the bundle. Run each task in Copilot agent mode. Repeat at least 3 times.
 3. **With bundle**: `python scripts/install.py <project>`. Same tasks, same model, same repetitions.
 4. Score every result with `check_project.py --json` and log the time and correction prompts.
 5. Report the averages and the deltas.
