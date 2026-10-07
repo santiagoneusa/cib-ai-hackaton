@@ -22,22 +22,14 @@ How we prove the value of the bundle: the same tasks, the same model, with and w
 
 ## Task set
 
-<!-- TODO(content): replace with real, representative team tasks. -->
+The executable benchmark, with full prompts, checklists and evaluator script, is in [benchmark/](../benchmark/README.md):
 
-1. Create a new project to analyze monthly deposits by segment.
-2. Write a query of transactions for the last 3 months by client type.
-3. Turn that query into an extraction class and call it from a notebook.
-4. Bar chart of the top 10 segments for the committee.
-5. Move a result table from on-premise to cloud.
-6. Refactor a messy notebook into `src/` modules.
-7. Optimize a slow query on a partitioned table.
-8. Review an existing project and fix the standards violations.
+1. **Test 1**: EDA and transformation of `KPIS_historico.xlsx` (notebook, impala-helper upload, cleaning SQL, feature table).
+2. **Test 2**: team score, harbor transfer to the cloud and an interactive Streamlit report.
 
 ## Results log
 
-| Task | Run | Bundle | Compliance | Findings | Corrections | Minutes |
-|---|---|---|---|---|---|---|
-| 1 | 1 | no | | | | |
+Record every run in [benchmark/results.csv](../benchmark/results.csv).
 
 ## Extrapolation
 
